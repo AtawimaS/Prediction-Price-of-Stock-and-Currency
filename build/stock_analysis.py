@@ -17,7 +17,7 @@ import get_data
 
 from NgambilAPI import TwitterScraper as TS
 
-def analyze_stock(find="btc-usd"):
+def analyze_stock(find='btc-usd'):
     # Scrape Twitter data
     scraper = TS(find, num=5)
     ini = scraper.scrape(dataframe=True)
@@ -42,15 +42,15 @@ def analyze_stock(find="btc-usd"):
     ini['Message'] = ini['Message'].apply(clean_text)
     
     # Load models and vectorizer
-    path = os.path.join('sentimen_analisis_model','NB.pickle')
+    path = os.path.join(parent_dir,'sentimen_analisis_model','NB.pickle')
     with open(path, 'rb') as file:
         model = pickle.load(file)
     
-    path = os.path.join('sentimen_analisis_model','vectorizer.pkl')
+    path = os.path.join(parent_dir,'sentimen_analisis_model','vectorizer.pkl')
     with open(path, 'rb') as file:
         vectorizer = pickle.load(file)
     
-    path = os.path.join('Logistic_regression_model', 'LR.pickle')
+    path = os.path.join(parent_dir,'Logistic_regression_model', 'LR.pickle')
     with open(path,'rb') as file:
         LR = pickle.load(file)
     
@@ -64,7 +64,7 @@ def analyze_stock(find="btc-usd"):
     hitung = sum(sentiment)
     sentimentnya = hitung / len(sentiment)
     
-    df = get_data.stocks(find)
+    df,nama_company = get_data.stocks(find)
     data = df.reset_index()
     date = data['Date']
     X = data[['Close']]
@@ -84,4 +84,4 @@ def analyze_stock(find="btc-usd"):
     ax.scatter(date, X)
     ax.plot(date, y_pred, color="Red")
     
-    return fig, real_price, price_predict, sentiment_analysis
+    return fig, real_price, price_predict, sentiment_analysis, nama_company
