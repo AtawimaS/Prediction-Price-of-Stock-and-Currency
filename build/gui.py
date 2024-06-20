@@ -6,8 +6,13 @@ from customtkinter import *
 import customtkinter
 from stock_analysis import analyze_stock  # Import the modified external code
 
+
 OUTPUT_PATH = Path(__file__).parent
-ASSETS_PATH = OUTPUT_PATH / Path(r"E:\Semester_4\Machine Learning\Code\Setiment_Analysis_with_Scraping_Threads\Setiment_Analysis_with_Scraping_Threads\build\assets\frame0")
+ASSETS_PATH = OUTPUT_PATH / "assets" / "frame0"
+ASSETS_PATH = ASSETS_PATH.resolve()
+print(OUTPUT_PATH)
+print(ASSETS_PATH)
+
 
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
