@@ -17,7 +17,7 @@ import get_data
 
 from NgambilAPI import TwitterScraper as TS
 
-def analyze_stock(find='btc-usd'):
+def analyze_stock(find='btc-usd', period = '6mo'):
     # Scrape Twitter data
     scraper = TS(find, num=5)
     ini = scraper.scrape(dataframe=True)
@@ -64,7 +64,7 @@ def analyze_stock(find='btc-usd'):
     hitung = sum(sentiment)
     sentimentnya = hitung / len(sentiment)
     
-    df,nama_company = get_data.stocks(find)
+    df,nama_company = get_data.stocks(find, period)
     data = df.reset_index()
     date = data['Date']
     X = data[['Close']]
@@ -74,11 +74,11 @@ def analyze_stock(find='btc-usd'):
     price_predict = float(y_pred[-1])
     
     if sentimentnya > 1.5:
-        sentiment_analysis = "Naik"
+        sentiment_analysis = "Up"
     elif sentimentnya < 1.5 and sentimentnya > 1:
-        sentiment_analysis = "Netral"
+        sentiment_analysis = "Neutral"
     else:
-        sentiment_analysis = "Turun"
+        sentiment_analysis = "Down"
     
     fig, ax = plt.subplots()
     ax.scatter(date, X)
