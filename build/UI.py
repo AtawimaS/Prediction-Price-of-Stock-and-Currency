@@ -9,7 +9,7 @@ st.markdown(
     """
 <style>
 [data-testid="stMetricValue"] {
-    font-size: 100px;
+    font-size: 50px;
 }
 </style>
 """,
@@ -43,8 +43,8 @@ def display_analysis(stock_code, period):
             elif sentiment_analysis == "Neutral":
                 st.image('assets/netral.gif')
             else:
-                st.image('assets/Down.gif')
-            st.write(f'<p style="font-size:20px;">Current Price: ${sentiment_analysis}</p>', unsafe_allow_html=True)
+                st.image('assets/turun.gif')
+            st.write(f'<p style="font-size:20px;">Sentiment Analysis : {sentiment_analysis}</p>', unsafe_allow_html=True)
 
     except Exception as e:
         st.error(f"An error occurred: {e}")
@@ -151,10 +151,12 @@ page_bg_img = '''
 
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
+
 st.sidebar.markdown(
     """
     <style>
-        [data-testid="stSidebar"][aria-expanded="true"] > div:first-child {
+        [data-testid="stSidebar"]
+        [aria-expanded="true"] > div:first-child {
             width: 250px;
         }
         .stButton button {
