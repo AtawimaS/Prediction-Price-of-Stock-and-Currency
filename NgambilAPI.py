@@ -6,7 +6,7 @@ class TwitterScraper:
     def __init__(self, find, num):
         self.find = find
         self.num = num
-        self.api_key = 'adce6b12b3a102086eb29fa3340572e2'
+        self.api_key = 'a08167cfc0974292ee8630738b9f4364'
         self.base_url = 'https://api.scraperapi.com/structured/twitter/search'
 
     def scrape(self, dataframe=False):
