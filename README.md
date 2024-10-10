@@ -14,5 +14,3 @@ These models work together to provide comprehensive insights into market trends 
 1. Open terminal or cmd.
 2. Navigate to this repository's directory by typing cd "PATH".
 3. Run the command python run_streamlit to launch the Streamlit application.
-
-4. 
